@@ -1,0 +1,38 @@
+﻿@page "/Entry"
+@using BlazorServer.Data 
+@using Microsoft.Extensions.Logging
+@inject ILogger<Entry> Logger
+
+<h3>Provide Feedback:</h3>
+
+<EditForm Model="@feedbackInput" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>Did things go well this sprint?</div>
+    <InputSelect id="wentWell" @bind-Value="feedbackInput.ThingsWentWell">
+        <option>Please Choose</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </InputSelect>
+    <div>Did things go better than last?</div>
+    <InputSelect id="wentWell" @bind-Value="feedbackInput.IsBetterThanLast">
+        <option>Please Choose</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </InputSelect>
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private FeedbackEntry feedbackInput = new();
+
+
+
+    private void HandleValidSubmit()
+    {
+        Logger.LogInformation("HandleValidSubmit called");
+
+        // Process the valid form
+    }
+}
