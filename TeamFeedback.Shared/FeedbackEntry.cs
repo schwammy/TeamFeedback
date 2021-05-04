@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SchwammyStreams.TeamFeedback.BlazorServer.Data
+namespace SchwammyStreams.TeamFeedback.Shared
 {
     public class FeedbackEntry
     {

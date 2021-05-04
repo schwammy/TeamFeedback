@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchwammyStreams.TeamFeedback.BlazorServer", "SchwammyStreams.TeamFeedback.BlazorServer\SchwammyStreams.TeamFeedback.BlazorServer.csproj", "{82BE3264-306F-464C-B18C-E7FD63F25401}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeamFeedback.WebApi", "TeamFeedback.WebApi\TeamFeedback.WebApi.csproj", "{EDA5E52D-A21D-4085-A2B3-71F98EC5320B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SchwammyStreams.TeamFeedback.Shared", "TeamFeedback.Shared\SchwammyStreams.TeamFeedback.Shared.csproj", "{D6849A6D-9FE7-4E2B-A99C-999163E85945}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{82BE3264-306F-464C-B18C-E7FD63F25401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82BE3264-306F-464C-B18C-E7FD63F25401}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82BE3264-306F-464C-B18C-E7FD63F25401}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDA5E52D-A21D-4085-A2B3-71F98EC5320B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDA5E52D-A21D-4085-A2B3-71F98EC5320B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDA5E52D-A21D-4085-A2B3-71F98EC5320B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDA5E52D-A21D-4085-A2B3-71F98EC5320B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6849A6D-9FE7-4E2B-A99C-999163E85945}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6849A6D-9FE7-4E2B-A99C-999163E85945}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6849A6D-9FE7-4E2B-A99C-999163E85945}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6849A6D-9FE7-4E2B-A99C-999163E85945}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
