@@ -29,10 +29,17 @@ namespace TeamFeedback.WebApi.Controllers
 
         // POST api/<FeedbackController>
         [HttpPost]
-        public void Post([FromBody] FeedbackEntry feedbackEntry)
+        public async Task<IActionResult> Post([FromBody] FeedbackEntry feedbackEntry)
         {
             // save data...
             //FeedbackOrchestrator
+
+            //if error return status code and error messages
+            if (feedbackEntry.TeamId == 1)
+            {
+                return new BadRequestResult();
+            }
+            return new OkResult();
         }
 
         // PUT api/<FeedbackController>/5

@@ -1,11 +1,15 @@
 ﻿@page "/Entry"
 @using SchwammyStreams.TeamFeedback.Shared
 @using Microsoft.Extensions.Logging
+@using System.Net.Http
+
 @inject ILogger<Entry> Logger
+@inject Services.IFeedbackService FeedbackService
+@inject NavigationManager NavigationManager
 
 <h3>Provide Feedback:</h3>
 
-<EditForm Model="@feedbackInput" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@feedbackInput" OnValidSubmit="@HandleValidSubmitAsync">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
@@ -40,14 +44,15 @@
         </InputSelect>
     </div>
     <button type="submit">Submit</button>
+    <div>@errorMessage</div>
 </EditForm>
 
 @code {
     private FeedbackEntry feedbackInput = new();
+    private string errorMessage;
 
 
-
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmitAsync()
     {
         Logger.LogInformation("HandleValidSubmit called");
 
@@ -55,5 +60,18 @@
 
         // call webapi
         //httpClient.bla bla bla
+        var result = await FeedbackService.SendFeedbackAsync(feedbackInput);
+
+        if (result.Status)
+        {
+            NavigationManager.NavigateTo("/");
+           
+            // navigate away
+        }
+        else
+        {
+            errorMessage = "ERROR!!!!!";
+            // display message
+        }
     }
 }
