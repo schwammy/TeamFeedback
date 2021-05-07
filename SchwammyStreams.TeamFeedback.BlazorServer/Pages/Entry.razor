@@ -9,42 +9,61 @@
 
 <h3>Provide Feedback:</h3>
 
-<EditForm Model="@feedbackInput" OnValidSubmit="@HandleValidSubmitAsync">
+
+<EditForm Model="@feedbackInput" OnValidSubmit="@HandleValidSubmitAsync" class="row col-md-6">
     <DataAnnotationsValidator />
+
+    <div class="alert alert-info col-md-12">
+        Please provide feedback for your team
+    </div>
+
     <ValidationSummary />
 
-    <div>
-        Which Team are you providing feedback for:
-        <InputSelect id="team" @bind-Value="feedbackInput.TeamId">
-            <option>Please Choose</option>
-            <option value="1">Team A</option>
-            <option value="2">Team B</option>
-        </InputSelect>
+    <div class="row col-md-12">
+        <label class="col-form-label col-md-4">Which Team are you providing feedback for:</label>
+        <div class="col-md-8">
+            <InputSelect id="team" @bind-Value="feedbackInput.TeamId" class="form-control">
+                <option>Please Choose</option>
+                <option value="1">Team A</option>
+                <option value="2">Team B</option>
+            </InputSelect>
+        </div>
     </div>
 
-    <div>
-        What is the end date of the sprint?
-        <InputDate id="startDate" @bind-Value="feedbackInput.SprintEnd"></InputDate>
+    <div class="row col-md-12">
+        <label class="col-form-label col-md-4">What is the end date of the sprint?</label>
+        <div class="col-md-8">
+            <InputDate id="startDate" @bind-Value="feedbackInput.SprintEnd" class="form-control"></InputDate>
+        </div>
     </div>
 
-    <div>
-        Did things go well this sprint?
-        <InputSelect id="wentWell" @bind-Value="feedbackInput.ThingsWentWell">
-            <option>Please Choose</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </InputSelect>
+    <div class="row col-md-12">
+        <label class="col-form-label col-md-4">Did things go well this sprint?</label>
+        <div class="col-md-8">
+            <InputSelect id="wentWell" class="form-control" @bind-Value="feedbackInput.ThingsWentWell">
+                <option>Please Choose</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </InputSelect>
+        </div>
     </div>
-    <div>
-        Did things go better than last?
-        <InputSelect id="wentWell" @bind-Value="feedbackInput.IsBetterThanLast">
-            <option>Please Choose</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-        </InputSelect>
+    <div class="row col-md-12">
+        <label class="col-form-label col-md-4">Did things go better than last?</label>
+        <div class="col-md-8">
+            <InputSelect id="wentWell" class="form-control" @bind-Value="feedbackInput.IsBetterThanLast">
+                <option>Please Choose</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </InputSelect>
+        </div>
     </div>
-    <button type="submit">Submit</button>
-    <div>@errorMessage</div>
+    <div class="row col-md-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+    @if (!String.IsNullOrWhiteSpace(errorMessage))
+    {
+        <div class="alert alert-danger">@errorMessage</div>
+    }
 </EditForm>
 
 @code {
