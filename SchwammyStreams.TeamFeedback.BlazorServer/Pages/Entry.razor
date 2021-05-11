@@ -60,7 +60,7 @@
     <div class="row col-md-12">
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    @if (!String.IsNullOrWhiteSpace(errorMessage))
+    @foreach(var errorMessage in errorMessages)
     {
         <div class="alert alert-danger">@errorMessage</div>
     }
@@ -68,11 +68,20 @@
 
 @code {
     private FeedbackEntry feedbackInput = new();
-    private string errorMessage;
+    private List<string> errorMessages;
+
+
 
 
     private async Task HandleValidSubmitAsync()
     {
+
+
+
+
+
+        //TODO: reset OnSubmit handler to OnValidSubmit
+
         Logger.LogInformation("HandleValidSubmit called");
 
         // Process the valid form
@@ -81,16 +90,20 @@
         //httpClient.bla bla bla
         var result = await FeedbackService.SendFeedbackAsync(feedbackInput);
 
+
+
         if (result.Status)
         {
             NavigationManager.NavigateTo("/");
-           
+
             // navigate away
         }
         else
         {
-            errorMessage = "ERROR!!!!!";
+            errorMessages = result.Messages;
             // display message
         }
     }
 }
+
+

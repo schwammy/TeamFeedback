@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SchwammyStreams.TeamFeedback.BlazorServer.Data;
 using SchwammyStreams.TeamFeedback.Shared;
 using System;
 using System.Collections.Generic;
@@ -36,8 +37,16 @@ namespace SchwammyStreams.TeamFeedback.BlazorServer.Services
             var httpResult = await _httpClient.SendAsync(message);
 
             Result result = new Result();
-            result.Status = httpResult.StatusCode == System.Net.HttpStatusCode.OK;
 
+            var messages = await httpResult.Content.ReadAsStringAsync();
+            var rootObject = JsonConvert.DeserializeObject<HttpResponse>(messages);
+
+
+            result.Status = httpResult.StatusCode == System.Net.HttpStatusCode.OK;
+            foreach(var error in rootObject.errors)
+            {
+                result.Messages.Add(error.Value[0]);
+            }
             return result;
         }
     }

@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TeamFeedback.Shared\SchwammyStreams.TeamFeedback.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -32,6 +32,12 @@ namespace TeamFeedback.WebApi.Controllers
         public async Task<IActionResult> Post([FromBody] FeedbackEntry feedbackEntry)
         {
             // save data...
+
+
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
             //FeedbackOrchestrator
 
             //if error return status code and error messages
